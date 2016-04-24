@@ -23,7 +23,7 @@ module.exports = function (app) {
      * List all inventory
      */
 
-    app.use('/inventoy',
+    app.use('/inventory',
         authMW(objectRepository),
         getInventoryListMW(objectRepository),
         renderMW(objectRepository, 'inventory')
@@ -33,7 +33,7 @@ module.exports = function (app) {
      * Create new inventory
      */
 
-    app.use('/inventoy/new',
+    app.use('/inventory/new',
         authMW(objectRepository),
         updateInventoryMW(objectRepository),
         renderMW(objectRepository, 'newinventory')
