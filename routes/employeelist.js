@@ -14,23 +14,13 @@ module.exports = function (app) {
     };
 
     /**
-     * List all employee
-     */
-
-    app.use('/employees',
-        authMW(objectRepository),
-        getEmployeeListMW(objectRepository),
-        renderMW(objectRepository, 'employees')
-    );
-
-    /**
      * Add new employee
      */
 
     app.use('/employees/new',
         authMW(objectRepository),
         updateEmployeeMW(objectRepository),
-        renderMW(objectRepository, 'newemployee')
+        renderMW(objectRepository, 'employee_edit')
     );
 
     /**
@@ -41,7 +31,7 @@ module.exports = function (app) {
         authMW(objectRepository),
         getEmployeeMW(objectRepository),
         updateEmployeeMW(objectRepository),
-        renderMW(objectRepository, 'newemployee')
+        renderMW(objectRepository, 'employee_edit')
     );
 
     /**
@@ -56,6 +46,16 @@ module.exports = function (app) {
         function (req, res, next) {
             return res.redirect('/employees');
         }
+    );
+
+    /**
+     * List all employee
+     */
+
+    app.use('/employees',
+      authMW(objectRepository),
+      getEmployeeListMW(objectRepository),
+      renderMW(objectRepository, 'employees')
     );
 
 };

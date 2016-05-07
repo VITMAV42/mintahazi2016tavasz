@@ -20,23 +20,13 @@ module.exports = function (app) {
     };
 
     /**
-     * List all inventory
-     */
-
-    app.use('/inventory',
-        authMW(objectRepository),
-        getInventoryListMW(objectRepository),
-        renderMW(objectRepository, 'inventory')
-    );
-
-    /**
      * Create new inventory
      */
 
     app.use('/inventory/new',
         authMW(objectRepository),
         updateInventoryMW(objectRepository),
-        renderMW(objectRepository, 'newinventory')
+        renderMW(objectRepository, 'inventory_edit')
     );
 
     /**
@@ -49,7 +39,7 @@ module.exports = function (app) {
         getEmployeeListMW(objectRepository),
         getItemList(objectRepository),
         updateInventoryMW(objectRepository),
-        renderMW(objectRepository, 'newinventory')
+        renderMW(objectRepository, 'inventory_edit')
     );
 
     /**
@@ -65,5 +55,16 @@ module.exports = function (app) {
             return res.redirect('/inventory');
         }
     );
+
+    /**
+     * List all inventory
+     */
+
+    app.use('/inventory',
+      authMW(objectRepository),
+      getInventoryListMW(objectRepository),
+      renderMW(objectRepository, 'inventory')
+    );
+
 
 };

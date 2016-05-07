@@ -15,35 +15,25 @@ module.exports = function (app) {
     };
 
     /**
-     * List all items
-     */
-
-    app.use('/items',
-        authMW(objectRepository),
-        getItemListMW(objectRepository),
-        renderMW(objectRepository, 'items')
-    );
-
-    /**
      * Create new item
      */
 
     app.use('/items/new',
         authMW(objectRepository),
         updateItemMW(objectRepository),
-        renderMW(objectRepository, 'newitem')
+        renderMW(objectRepository, 'item_edit')
     );
 
     /**
      * Edit the item details
      */
 
-    app.use('/inventory/:itemid/edit',
+    app.use('/items/:itemid/edit',
         authMW(objectRepository),
         getItemMW(objectRepository),
         getTypeListMW(objectRepository),
         updateItemMW(objectRepository),
-        renderMW(objectRepository, 'newitem')
+        renderMW(objectRepository, 'item_edit')
     );
 
     /**
@@ -51,13 +41,23 @@ module.exports = function (app) {
      * - then redirect to /items
      */
 
-    app.use('/inventory/:itemid/delete',
+    app.use('/items/:itemid/delete',
         authMW(objectRepository),
         getItemMW(objectRepository),
         deleteItemMW(objectRepository),
         function (req, res, next) {
             return res.redirect('/items');
         }
+    );
+
+    /**
+     * List all items
+     */
+
+    app.use('/items',
+      authMW(objectRepository),
+      getItemListMW(objectRepository),
+      renderMW(objectRepository, 'items')
     );
 
 };

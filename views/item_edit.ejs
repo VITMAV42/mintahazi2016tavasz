@@ -1,0 +1,26 @@
+<% include headeruser %>
+<div class="col-md-push-3 col-md-6 col-xs-12">
+    <h2>Item edit</h2>
+
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="itemtype">Type</label>
+            <select id="itemtype" class="form-control">
+                <option>Lorem ipsum</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="serial">Serial</label>
+            <input type="text" id="serial" class="form-control">
+        </div>
+        <div class="form-group">
+            <a href="/items" class="btn btn-primary">Save</a>
+            <a href="/items" class="btn btn-default">Cancel</a>
+        </div>
+    </form>
+</div>
+<% include footer %>
